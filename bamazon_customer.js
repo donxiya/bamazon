@@ -54,11 +54,11 @@ function purchase(){
  ]).then(function(answers){
  	var quantity = answers.Quantity;
  	var ID = answers.ID;
- 	purchaseOrder(ID, quantity);
+ 	sendOrder(ID, quantity);
  });
 };
 
-function purchaseOrder(ID, quantity){
+function sendOrder(ID, quantity){
 	connection.query('Select * FROM products WHERE item_id = ' + ID, function(err,res){
 		if(err){console.log(err)};
 		if(quantity <= res[0].stock_quantity){
@@ -69,7 +69,7 @@ function purchaseOrder(ID, quantity){
 		} else{
 			console.log("Insufficient quantity.");
 		};
-		displayProducts();
+		display();
 	});
 };
 
