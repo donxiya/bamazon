@@ -14,9 +14,11 @@ connection.connect(function (err) {
     if (err) throw err;
     console.log("connected as id" + connection.threadId);
 });
+console.log("BAMAZON!");
 
 //display function
 var display = function () {
+	console.log("BAMAZON!");
     //query the table
     var query = "Select * FROM products";
     connection.query(query, function (err, res) {
