@@ -71,15 +71,24 @@ function sendOrder(ID, quantity) {
 			var cost = res[0].price * quantity;
 			console.log("Success");
 			console.log("Total cost: " + cost);
+			var departmentID = res[0].department_name;
 			connection.query("UPDATE products SET stock_quantity = stock_quantity - " + quantity + " WHERE item_id = " + ID);
-			console.table(res);
-
+			//updateSales(cost, departmentID);
 		} else {
 			console.log("Insufficient quantity.");
 		};
-		console.log("finish order");
 		display();
-	});
+	})
 };
+// function updateSales(cost, departmentID) {
+// 	connection.query("SELECT * FROM departments WHERE department_name = " + departmentID, function (err, departRes) {
+// 		if (err) { console.log(err) };
+// 		console.log(departRes);
+// 		var ID = departRes.department_id;
+// 		console.log("cost " + cost + ", " + ID);
+// 		connection.query("UPDATE departments SET total_sales = total_sales + " + cost + " WHERE department_id = " + ID);
+// 		console.log("finish order");
+// 	})
+// };
 
 display(); 

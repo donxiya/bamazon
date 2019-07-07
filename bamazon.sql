@@ -26,3 +26,18 @@ VALUES (001, "item1", "depart1", 1.11, 1),
 	   (012, "item12", "depart3", 3.33, 3);
 
 Select * FROM products;
+
+CREATE TABLE departments(
+    department_id INT(3) NOT NULL,
+    department_name VARCHAR(50) NOT NULL,
+    over_head_costs DECIMAL(10,2) NOT NULL,
+    total_sales DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY(department_id));
+
+INSERT INTO departments(department_id, department_name, over_head_costs, total_sales)
+VALUES	(001, "depart1", 1000, 10000),
+		(002, "depart2", 2000, 20000),
+		(003, "depart3", 3000, 30000),
+		(004, "test", 10.00, 20);
+
+Select * FROM departments;

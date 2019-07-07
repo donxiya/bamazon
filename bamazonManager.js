@@ -3,10 +3,10 @@ var inquirer = require("inquirer");
 var Table = require("cli-table");
 
 var connection = mysql.createConnection({
-	host: "localhost",
+	host: "127.0.0.1",
 	port: 3306,
 	user: "root",
-	password: "",
+	password: "Ac!00899297",
 	database: "bamazon"
 });
 
@@ -44,34 +44,34 @@ function managerAction() {
 function view() {
 	connection.query('SELECT * FROM Products', function (err, res) {
 		if (err) { console.log(err) };
-		var theDisplayTable = new Table({
+		var displayTable = new Table({
 			head: ["ID", "Name", "Department", "Price", "Quantity"],
 			colWidths: [20, 20, 20, 20, 20]
 		});
 		for (i = 0; i < res.length; i++) {
-			theDisplayTable.push(
+			displayTable.push(
 				[res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]
 			);
 		}
-		console.log(theDisplayTable.toString());
-		view();
+		console.log(displayTable.toString());
+		managerAction();
 	});
 };
 function viewLow() {
 	connection.query('SELECT * FROM Products', function (err, res) {
 		if (err) { console.log(err) };
-		var theDisplayTable = new Table({
+		var displayTable = new Table({
 			head: ["ID", "Name", "Department", "Price", "Quantity"],
 			colWidths: [20, 20, 20, 20, 20]
 		});
 		for (i = 0; i < res.length; i++) {
 			if (res[i].stock_quantity <= 5) {
-				theDisplayTable.push(
+				displayTable.push(
 					[res[i].item_id, res[i].product_name, res[i].department_name, res[i].price, res[i].stock_quantity]
 				);
 			}
 		}
-		console.log(theDisplayTable.toString());
+		console.log(displayTable.toString());
 		view();
 	});
 };
@@ -98,7 +98,7 @@ function restock() {
 function restockUpdate(ID, quantity) {
 	connection.query('SELECT * FROM Products WHERE item_id = ' + ID, function (err, res) {
 		if (err) { console.log(err) };
-		connection.query('UPDATE Products SET stock_quantity = stock_quantity + ' + quantity + 'WHERE item_id =' + item_id);
+		connection.query('UPDATE Products SET stock_quantity = stock_quantity + ' + quantity + ' WHERE item_id =' + ID);
 		view();
 	});
 }
@@ -132,18 +132,27 @@ function addNew() {
 		},
 
 	]).then(function (answers) {
-		var id = answers.Id;
+		var id = answers.ID;
 		var name = answers.Name;
-		var department = answers.department;
+		var department = answers.Department;
 		var price = answers.Price;
 		var quantity = answers.Quantity;
+		console.log(id, name, department, price, quantity);
 		newItemUpdate(id, name, department, price, quantity);
 	});
 };
 
-function newItemUpdate(name, category, price, quantity) {
-	connection.query('INSERT INTO products (item_id,product_name,department_name,price,stock_quantity) VALUES("' + id + '","' + name + '","' + category + '",' + price + ',' + quantity + ')');
+function newItemUpdate(id, name, department, price, quantity) {
+	connection.query("INSERT INTO products SET ?",{
+		item_id:id,
+		product_name:name,
+		department_name:department,
+		price:price,
+		stock_quantity:quantity,
+	  });
+
 	view();
 };
 
-view();
+
+managerAction();
