@@ -83,16 +83,14 @@ function sendOrder(ID, quantity) {
 function updateSales(cost, departmentID) {
 	connection.query("SELECT * FROM departments", function(err, deptRes){
 		if(err) throw err;
-		var index;
+		var departmentID;
 		for(var i = 0; i < deptRes.length; i++){
 		  if(deptRes[i].department_name === departmentID){
-			index = i;
+			departmentID = i;
 		  }
 		}
-		
-		//updates totalSales in departments table
 		connection.query("UPDATE departments SET ? WHERE ?", [
-		{total_sales: deptRes[index].total_sales + cost},
+		{total_sales: deptRes[departmentID].total_sales + cost},
 		{department_name: departmentID}
 		], function(err, deptRes){
 			if(err) throw err;
