@@ -72,7 +72,7 @@ function viewLow() {
 			}
 		}
 		console.log(displayTable.toString());
-		view();
+		managerAction();
 	});
 };
 
