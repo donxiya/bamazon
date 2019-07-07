@@ -73,22 +73,40 @@ function sendOrder(ID, quantity) {
 			console.log("Total cost: " + cost);
 			var departmentID = res[0].department_name;
 			connection.query("UPDATE products SET stock_quantity = stock_quantity - " + quantity + " WHERE item_id = " + ID);
-			//updateSales(cost, departmentID);
+			updateSales(cost, departmentID);
 		} else {
 			console.log("Insufficient quantity.");
 		};
 		display();
 	})
 };
-// function updateSales(cost, departmentID) {
-// 	connection.query("SELECT * FROM departments WHERE department_name = " + departmentID, function (err, departRes) {
-// 		if (err) { console.log(err) };
-// 		console.log(departRes);
-// 		var ID = departRes.department_id;
-// 		console.log("cost " + cost + ", " + ID);
-// 		connection.query("UPDATE departments SET total_sales = total_sales + " + cost + " WHERE department_id = " + ID);
-// 		console.log("finish order");
-// 	})
-// };
+function updateSales(cost, departmentID) {
+	connection.query("SELECT * FROM departments", function(err, deptRes){
+		if(err) throw err;
+		var index;
+		for(var i = 0; i < deptRes.length; i++){
+		  if(deptRes[i].department_name === departmentID){
+			index = i;
+		  }
+		}
+		
+		//updates totalSales in departments table
+		connection.query("UPDATE departments SET ? WHERE ?", [
+		{total_sales: deptRes[index].total_sales + cost},
+		{department_name: departmentID}
+		], function(err, deptRes){
+			if(err) throw err;
+			//console.log("Updated Dept Sales.");
+		});})
+	// connection.query("SELECT * FROM departments WHERE department_id = 001", function (err, departRes) {
+	// 	if (err) { console.log(err) };
+	// 	console.log("depart res: "+departRes[0]);
+	// 	var ID = departRes[0].department_id;
+	// 	console.log(departmentID);
+	// 	console.log("cost " + cost + ", " + ID);
+	// 	connection.query("UPDATE departments SET total_sales = total_sales + " + cost + " WHERE department_id = " + ID);
+	// 	console.log("finish order");
+	// })
+};
 
 display(); 
