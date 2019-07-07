@@ -12,6 +12,7 @@ A node.js app with basic sales database structure
 
 ### Funtions Demo
 - customer: 
+
 ![](https://raw.githubusercontent.com/donxiya/bamazon/master/screenshot/ezgif.com-video-to-gif0.gif?token=AHQOALIMP4HVE4UCXMJIIC25EF6JO)
 
 - manager view inventory:
