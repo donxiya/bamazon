@@ -15,7 +15,7 @@ A node.js app with basic sales database structure
 ![](https://raw.githubusercontent.com/donxiya/bamazon/master/screenshot/ezgif.com-video-to-gif0.gif?token=AHQOALIMP4HVE4UCXMJIIC25EF6JO)
 
 - manager view inventory:
-![](https://raw.githubusercontent.com/donxiya/bamazon/master/screenshot/ezgif.com-video-to-gif.gif?token=AHQOALM3CFPM3YYO5BY3JN25EF5SM)
+![](https://raw.githubusercontent.com/donxiya/bamazon/master/screenshot/ezgif.com-video-to-gif.gif?token=AHQOALOLU6W4DYSNF3OBGPC5EF6L2)
 
 - manager view low count inventory:
 ![](https://raw.githubusercontent.com/donxiya/bamazon/master/screenshot/ezgif.com-video-to-gif%20(1).gif?token=AHQOALP6QHAOCCP3M52VBDC5EF5VO)
