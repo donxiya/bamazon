@@ -10,8 +10,8 @@ CREATE TABLE products(
 	stock_quantity INT(20) NOT NULL,
 	PRIMARY KEY (item_id)
 );
+INSERT INTO products (item_id, product_name, department_name, price, stock_quantity)
 
-Select * FROM products;
 VALUES (001, "item1", "depart1", 1.11, 1),
 	   (002, "item2", "depart2", 2.22, 2),
 	   (003, "item3", "depart3", 3.33, 3),
@@ -23,4 +23,6 @@ VALUES (001, "item1", "depart1", 1.11, 1),
 	   (009, "item9", "depart3", 3.33, 3),
 	   (010, "item10", "depart1", 1.11, 1),
 	   (011, "item11", "depart2", 2.22, 2),
-	   (012, "item12", "depart3", 3.33, 3),
+	   (012, "item12", "depart3", 3.33, 3);
+
+Select * FROM products;
