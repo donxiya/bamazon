@@ -39,7 +39,7 @@ A node.js app with basic sales database structure
 - NodeJS
 - Mysql
 - cli-table
-- inquiere
+- inquirer
 
 ### Author
 Hao Tran
