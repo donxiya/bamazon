@@ -28,6 +28,7 @@ A node.js app with basic sales database structure
 ![](https://raw.githubusercontent.com/donxiya/bamazon/master/screenshot/ezgif.com-video-to-gif%20(2).gif?token=AHQOALNMZZYT6J6Q2ME5HBK5EF6YM)
 
 - manager add new product:
+
 ![](https://raw.githubusercontent.com/donxiya/bamazon/master/screenshot/ezgif.com-video-to-gif%20(3).gif?token=AHQOALJQNSAOPQNB5IVNVDC5EF62K)
 
 ### Technologies Utilized
